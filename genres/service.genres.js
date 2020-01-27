@@ -1,4 +1,4 @@
-const Genre = require("./genres.model");
+const Genre = require("./model.genres");
 
 const service = {};
 

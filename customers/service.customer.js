@@ -1,4 +1,4 @@
-const Customer = require("./customers.model");
+const Customer = require('./model.customer');
 
 const service = {};
 

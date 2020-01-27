@@ -1,5 +1,5 @@
 const express = require("express");
-const service = require("./genres.service");
+const service = require("./service.genres");
 const router = express.Router();
 const Joi = require("joi");
 
