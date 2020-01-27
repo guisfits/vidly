@@ -19,9 +19,11 @@ mongoose
 // Routes
 const genres = require("./genres/routers.genres");
 const customers = require("./customers/routers.customer");
+const movie = require("./movie/routers.movie");
 
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
+app.use("/api/movies", movie);
 
 // Server
 const port = process.env.PORT || 3000;
