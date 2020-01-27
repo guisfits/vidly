@@ -17,8 +17,8 @@ mongoose
 	.catch(err => debug("Could not connect to MongoDb", err));
 
 // Routes
-const genres = require("./genres/genres.routes");
-const customers = require("./customers/customer.routes");
+const genres = require("./genres/routers.genres");
+const customers = require("./customers/routers.customer");
 
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
