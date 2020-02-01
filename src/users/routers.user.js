@@ -1,11 +1,17 @@
 const service = require("./service.user");
 const { validate } = require("./model.user");
+const authMiddeware = require("../../middlewares/auth.middleware");
 
 const _ = require("lodash");
-const config = require("config");
-const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
+
+router.get("/me", authMiddeware, async (req, res) => {
+	const user = await service.getById(req.user._id);
+	if (!user) return res.send(404).send("User with the given id was not find");
+
+	res.send(user);
+});
 
 router.post("/", async (req, res) => {
 	const { error } = validate(req.body);

@@ -1,14 +1,20 @@
-const bcrypt = require('bcrypt');
-const { User } = require('./model.user');
+const bcrypt = require("bcrypt");
+const { User } = require("./model.user");
 
 const services = {};
 
-services.get = async (email) => {
+services.get = async email => {
 	return await User.findOne({ email: email });
-}
+};
+
+services.getById = async id => {
+	return await User.findById(id).select("-password");
+};
 
 services.createUser = async (name, email, password) => {
 	password = await hashPassword(password);
+
+	User.update
 
 	const user = new User({
 		name,

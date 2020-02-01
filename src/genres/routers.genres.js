@@ -1,5 +1,6 @@
 const service = require("./service.genres");
 const authMiddeware = require("../../middlewares/auth.middleware");
+const adminMiddeware = require('../../middlewares/admin.middeware');
 
 const Joi = require("joi");
 const express = require("express");
@@ -37,7 +38,7 @@ router.put("/:id", async (req, res) => {
 	res.send(genre);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [ authMiddeware, adminMiddeware ], async (req, res) => {
 	const genre = await service.removeGenre(req.params.id);
 	if (!genre)
 		return res.status(404).send("The genre with the given ID was not found");
