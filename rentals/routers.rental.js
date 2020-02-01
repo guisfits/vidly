@@ -1,7 +1,8 @@
-const express = require("express");
 const rentalService = require("./service.rental");
 const customerService = require("./../customers/service.customer");
 const movieService = require("./../movies/service.movie");
+
+const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -28,3 +29,5 @@ router.post("/", async (req, res) => {
 
 	res.send(rental);
 });
+
+module.exports = router;
