@@ -22,12 +22,14 @@ const customers = require("./customers/routers.customer");
 const movie = require("./movies/routers.movie");
 const rentals = require("./rentals/routers.rental");
 const users = require("./users/routers.user");
+const accounts = require('./accounts/router.account');
 
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
 app.use("/api/movies", movie);
 app.use("/api/rentals", rentals);
 app.use("/api/users", users);
+app.use("/api/accounts", accounts);
 
 // Server
 const port = process.env.PORT || 3000;
