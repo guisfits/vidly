@@ -1,6 +1,6 @@
 const express = require("express");
 const movieService = require("./service.movie");
-const genreService = require("./../genres/service.genres");
+const genreService = require("../genres/service.genres");
 const router = express.Router();
 
 router.get("/", async (req, res) => {

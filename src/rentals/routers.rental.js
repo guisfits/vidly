@@ -1,6 +1,6 @@
 const rentalService = require("./service.rental");
-const customerService = require("./../customers/service.customer");
-const movieService = require("./../movies/service.movie");
+const customerService = require("../customers/service.customer");
+const movieService = require("../movies/service.movie");
 
 const express = require("express");
 const router = express.Router();

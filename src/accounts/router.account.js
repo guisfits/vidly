@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 
-const userService = require("./../users/service.user");
+const userService = require("../users/service.user");
 
 const router = express.Router();
 
