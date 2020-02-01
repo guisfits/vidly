@@ -1,7 +1,9 @@
-const express = require("express");
 const service = require("./service.genres");
-const router = express.Router();
+const authMiddeware = require("../../middlewares/auth.middleware");
+
 const Joi = require("joi");
+const express = require("express");
+const router = express.Router();
 
 router.get("/", async (req, res) => {
 	const genres = await service.getGenres();
@@ -16,7 +18,7 @@ router.get("/:id", async (req, res) => {
 	res.send(genre);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authMiddeware, async (req, res) => {
 	const { error } = validateGenre(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
