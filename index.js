@@ -17,12 +17,12 @@ mongoose
 	.catch(err => debug("Could not connect to MongoDb", err));
 
 // Routes
-const genres = require("./genres/routers.genres");
-const customers = require("./customers/routers.customer");
-const movie = require("./movies/routers.movie");
-const rentals = require("./rentals/routers.rental");
-const users = require("./users/routers.user");
-const accounts = require('./accounts/router.account');
+const genres = require("./src/genres/routers.genres");
+const customers = require("./src/customers/routers.customer");
+const movie = require("./src/movies/routers.movie");
+const rentals = require("./src/rentals/routers.rental");
+const users = require("./src/users/routers.user");
+const accounts = require('./src/accounts/router.account');
 
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
