@@ -2,6 +2,8 @@ const service = require("./service.user");
 const { validate } = require("./model.user");
 
 const _ = require("lodash");
+const config = require("config");
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
 
@@ -18,9 +20,10 @@ router.post("/", async (req, res) => {
 		req.body.password
 	);
 
+	const token = user.generateAuthToken();
 	const response = _.pick(user, ["name", "email"]);
-	res.send(response);
+
+	res.header("x-auth-token", token).send(response);
 });
 
 module.exports = router;
-

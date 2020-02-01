@@ -1,8 +1,14 @@
 // Imports
+const config = require("config");
 const debug = require("debug")("app:startup");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+
+if (!config.get("jwtPrivateKey")) {
+	debug("FATAL ERROR: jwtPrivateKey is not defined.");
+	process.exit(1);
+}
 
 // Midlewares
 app.use(express.json());
@@ -22,7 +28,7 @@ const customers = require("./src/customers/routers.customer");
 const movie = require("./src/movies/routers.movie");
 const rentals = require("./src/rentals/routers.rental");
 const users = require("./src/users/routers.user");
-const accounts = require('./src/accounts/router.account');
+const accounts = require("./src/accounts/routers.account");
 
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
