@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
+const errorMiddleware = require("./middlewares/error.middleware");
 const genres = require("./src/genres/routers.genres");
 const customers = require("./src/customers/routers.customer");
 const movie = require("./src/movies/routers.movie");
@@ -37,6 +38,8 @@ app.use("/api/movies", movie);
 app.use("/api/rentals", rentals);
 app.use("/api/users", users);
 app.use("/api/accounts", accounts);
+
+app.use(errorMiddleware);
 
 // Server
 const port = process.env.PORT || 3000;
