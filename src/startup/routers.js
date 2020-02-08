@@ -1,11 +1,11 @@
 const express = require("express");
 
-const genres = require("../src/genres/routers.genres");
-const customers = require("../src/customers/routers.customer");
-const movie = require("../src/movies/routers.movie");
-const rentals = require("../src/rentals/routers.rental");
-const users = require("../src/users/routers.user");
-const accounts = require("../src/accounts/routers.account");
+const genres = require("../app/genres/routers.genres");
+const customers = require("../app/customers/routers.customer");
+const movie = require("../app/movies/routers.movie");
+const rentals = require("../app/rentals/routers.rental");
+const users = require("../app/users/routers.user");
+const accounts = require("../app/accounts/routers.account");
 const errorMiddleware = require("../middlewares/error.middleware");
 
 module.exports = function(app) {
