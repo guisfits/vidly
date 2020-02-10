@@ -1,4 +1,5 @@
-const { User } = require("../../../src/app/users/model.user");
+/* eslint-disable no-undef */
+const { User } = require("../../src/app/users/model.user");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const mongoose = require("mongoose");

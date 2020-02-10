@@ -1,13 +1,13 @@
 /* eslint-disable no-undef */
 const request = require("supertest");
-const { Genre } = require("../../../src/app/genres/model.genres");
-const { User } = require("../../../src/app/users/model.user");
+const { Genre } = require("../../src/app/genres/model.genres");
+const { User } = require("../../src/app/users/model.user");
 
 let server;
 
 describe("/api/genres", () => {
 	beforeEach(() => {
-		server = require("../../../index");
+		server = require("../../index");
 	});
 	afterEach(async () => {
 		server.close();
