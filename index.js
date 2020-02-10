@@ -6,6 +6,7 @@ require("./src/startup/infra")();
 require("./src/startup/logging")();
 require("./src/startup/database")();
 require("./src/startup/routers")(app);
+require("./src/startup/prod")
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () =>
