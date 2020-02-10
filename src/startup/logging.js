@@ -1,5 +1,6 @@
 require("express-async-errors");
 require("winston-mongodb");
+const dateFormat = require("dateformat");
 const winston = require("winston");
 
 module.exports = function() {
@@ -13,8 +14,13 @@ module.exports = function() {
 		process.exit(1);
 	});
 
+	const date = new Date();
+	const dateString = dateFormat(date, "yyyy_mmm_dd");
+
 	winston.add(
-		new winston.transports.File({ filename: `vidly-${Date.now()}.log` })
+		new winston.transports.File({
+			filename: `vidly-${dateString}.log`
+		})
 	);
 
 	winston.add(
@@ -24,10 +30,10 @@ module.exports = function() {
 		})
 	);
 
-	winston.add(
-		new winston.transports.MongoDB({
-			db: "mongodb://localhost/vidly",
-			level: "info"
-		})
-	);
+	// winston.add(
+	// 	new winston.transports.MongoDB({
+	// 		db: "mongodb://localhost/vidly",
+	// 		level: "info"
+	// 	})
+	// );
 };
