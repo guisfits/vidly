@@ -4,8 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "DEBUG=app:* nodemon index.js",
-		"test": "jest --watchAll --verbose --coverage"
+		"start": "DEBUG=app:* node index.js",
+		"test": "jest --watchAll --verbose --coverage",
+	},
+	"engines": {
+		 "node": "13.1.0"
 	},
 	"keywords": [],
 	"author": "",
