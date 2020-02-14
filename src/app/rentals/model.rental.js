@@ -55,8 +55,14 @@ const rentalSchema = new mongoose.Schema({
 	}
 });
 
+
 rentalSchema.methods.numberOfDaysOut = function() {
 	return moment().diff(this.dateOut, "days");
 };
+
+rentalSchema.methods.return = function() {
+	this.dateReturned = new Date();
+	this.rentalFee = this.movie.dailyRentalRate * this.numberOfDaysOut();
+}
 
 module.exports = mongoose.model("Rental", rentalSchema);

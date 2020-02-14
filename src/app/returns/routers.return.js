@@ -10,18 +10,14 @@ router.post("/", authMiddlware, async (req, res) => {
 
 	if (!req.body.movieId) return res.status(400).send("movieId not provided");
 
-	const rental = await rentalService.getByCustomerAndMovie(
-		req.body.customerId,
-		req.body.movieId
-	);
+	const rental = await rentalService.getByCustomerAndMovie(req.body.customerId, req.body.movieId);
 
 	if (!rental) return res.status(404).send("Rental not founded");
 
 	if (rental.dateReturned)
 		return res.status(400).send("Return already processed");
 
-	rental.rentalFee = rental.movie.dailyRentalRate * rental.numberOfDaysOut();
-	rental.dateReturned = new Date();
+	rental.return();
 	await rental.save();
 
 	await Movie.update(

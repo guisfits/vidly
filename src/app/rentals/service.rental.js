@@ -2,12 +2,12 @@ const Rental = require("./model.rental");
 
 const services = {};
 
-services.get = async () => {
-	return await Rental.find().sort("-dateOut");
+services.get = () => {
+	return Rental.find().sort("-dateOut");
 };
 
-services.getByCustomerAndMovie = async (customerId, movieId) => {
-	return await Rental.findOne({
+services.getByCustomerAndMovie = (customerId, movieId) => {
+	return Rental.findOne({
 		"customer._id": customerId,
 		"movie._id": movieId
 	});
