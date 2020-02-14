@@ -21,15 +21,6 @@ services.create = async (title, numberInStock, dailyRentalRate, genre) => {
 	return await movie.save();
 };
 
-services.update = async (id, title, numberInStock, dailyRentalRate, genre) => {
-	return await Movie.findByIdAndUpdate(id, {
-		title: title,
-		numberInStock: numberInStock,
-		dailyRentalRate: dailyRentalRate,
-		genre: genre
-	});
-};
-
 services.remove = async (id) => {
 	return await Movie.findByIdAndRemove(id);
 }

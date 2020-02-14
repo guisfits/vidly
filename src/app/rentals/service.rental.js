@@ -6,6 +6,13 @@ services.get = async () => {
 	return await Rental.find().sort("-dateOut");
 };
 
+services.getByCustomerAndMovie = async (customerId, movieId) => {
+	return await Rental.findOne({
+		"customer._id": customerId,
+		"movie._id": movieId
+	});
+};
+
 services.create = async (customer, movie) => {
 	const rental = new Rental({
 		customer: {
@@ -22,3 +29,5 @@ services.create = async (customer, movie) => {
 
 	return await rental.save();
 };
+
+module.exports = services;

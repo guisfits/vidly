@@ -1,3 +1,4 @@
+const moment = require("moment");
 const mongoose = require("mongoose");
 
 const rentalSchema = new mongoose.Schema({
@@ -53,5 +54,9 @@ const rentalSchema = new mongoose.Schema({
 		min: 0
 	}
 });
+
+rentalSchema.methods.numberOfDaysOut = function() {
+	return moment().diff(this.dateOut, "days");
+};
 
 module.exports = mongoose.model("Rental", rentalSchema);
